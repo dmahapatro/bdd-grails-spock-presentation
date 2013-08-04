@@ -1,0 +1,341 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Behavior Driven Development</title>
+
+		<meta name="description" content="Presentation on BDD">
+		<meta name="author" content="Dhiraj Mahapatro">
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="css/reveal.min.css">
+		<link rel="stylesheet" href="css/theme/default.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+		<script>
+			document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+        <div class="reveal">
+            <!-- Any section element inside of this container is displayed as a slide -->
+            <div class="slides">
+                <section>
+                    <h3>[B]ehavior [D]riven [D]evelopment</h3>
+
+                    <div class="absolute-element"
+                         style="position: absolute; width: 960px; height: 46px; z-index: 7; left: 3px; top: 166px; max-height: none; max-width: none;">
+                        <span>By</span>
+                    </div>
+
+                    <div style="max-height: none; max-width: none; position: absolute; width: 953px; height: 209px; z-index: 8; left: 3px; top: 219px;"
+                         class="absolute-element">
+                        <img src="http://a1.s6img.com/cdn/box_006/post_16/786946_1377221_lz.jpg">
+                    </div>
+                </section>
+
+                <section>
+                    <h3>Agenda</h3>
+                    <br>
+
+                    <div>
+                        <ul>
+                            <li>
+                                <p style="font-size: 28px;">Who is this new Indian guy?</p>
+                            </li>
+                            <li>
+                                <p style="font-size: 28px;">BDD</p>
+                            </li>
+                            <ul>
+                                <li>
+                                    <p style="font-size: 28px;">Why? <span>What? </span><span>How?</span>
+                                    </p>
+                                </li>
+                            </ul>
+                            <li>
+                                <p style="font-size: 28px;">Spock Framework</p>
+                            </li>
+                            <ul>
+                                <li>
+                                    <font style="font-size: 28px;">Why? <span>What? </span><span>How?</span>
+                                    </font>
+                                </li>
+                            </ul>
+                            <li>
+                                <p style="font-size: 28px;">Demo</p>
+                            </li>
+                            <li>
+                                <p style="font-size: 28px;">No Questions Please..</p>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+                <section>
+                    <h3>Who Am I?</h3><br><br>
+                    <div><p style="font-size: 32px;">Dhiraj Mahapatro</p></div>
+                    <div><p style="font-size: 24px;">Grails Developer @ NetJets</p></div>
+                    <div><p style="font-size: 18px;">twitter # <a href="https://twitter.com/dhirajmahapatro">@dhirajmahapatro</a></p></div>
+                    <div><p style="font-size: 18px;">GitHub # <a href="http://bit.ly/1b07DuM">dmahapatro</a></p></div>
+                    <div><p style="font-size: 18px;">Stackoverflow # <a href="http://bit.ly/16cS5AS">dmahapatro</a></p></div>
+                </section>
+                <section>
+                    <section>
+                        <p class="absolute-element"
+                           style="position: absolute; width: 525px; height: 46px; z-index: 4; left: 214px; top: 50px;">
+                            Why BDD when we follow TDD?</p>
+
+                        <p class="absolute-element fragment roll-in"
+                           style="position: absolute; width: 713px; height: 46px; z-index: 4; left: 110px; top: 150px; max-height: none; max-width: none;font-size: 32px;"
+                           data-fragment-index="0">TDD facilitates writing code correct</p>
+
+                        <p class="absolute-element fragment roll-in"
+                           style="position: absolute; width: 713px; height: 46px; z-index: 4; left: 110px; top: 200px; max-height: none; max-width: none;font-size: 32px;"
+                           data-fragment-index="1">BDD facilitates writing correct code</p>
+                    </section>
+                    <section>
+                        <h3>TDD Approach</h3><br>
+
+                        <div>
+                            <pre><code data-trim contenteditable>
+@TestFor(SampleController)
+@Mock(Sample)
+class SampleControllerTests {
+    void testControllerActionShowReturnsString() {
+        //Create mocked object instance
+        new Sample(name: 'Sample')
+
+        //Call controller action
+        controller.show()
+
+        //Assert response
+        assert controller.response.contentAsString == 'Hello World'
+    }
+}
+                            </code></pre>
+                        </div>
+
+                        <div><p style="font-size: 24px; color: #00ff00">Test makes sure the controller action is called and response is got back appropriately.</p></div>
+                    </section>
+                </section>
+
+                <section>
+                    <h3>We tested</h3>
+
+                    <ul style="font-size: 28px;">
+                        <li>Code works correctly!!! [Peace]</li>
+                        <li>Unit test passes!!!</li>
+                        <li>Who cares about business acceptance criteria?</li>
+                    </ul>
+
+                    <div><br></div>
+
+                    <h3 class="fragment roll-in" data-fragment-index="0">Never tested</h3>
+
+                    <ul style="font-size: 28px;">
+                        <li class="fragment roll-in" data-fragment-index="1">Do we really need "Hello World" back from action?</li>
+                        <li class="fragment roll-in" data-fragment-index="2">Did we actually meet the acceptance criteria?</li>
+                        <li class="fragment roll-in" data-fragment-index="3">Expected Behavior of the application?</li>
+                    </ul>
+
+                    <h3 class="absolute-element fragment roll-in"
+                       style="position: absolute; width: 415px; height: 46px; z-index: 4; left: 280px; top: 519px; max-height: none; max-width: none;font-size: 6"
+                       data-fragment-index="4">Result &gt;&gt;
+                    </h3>
+                </section>
+
+                <section>
+                    <h2>Unhappy BA</h2>
+                    <img src="http://www.afr.com/rf/image/2009-2014/AFR/2012/07/17/Photos/e8b959c0-cfe5-11e1-891d-ca775b0e903b_syd-5nzo3d9wafk1ca9iojjk-516--646x363.jpg">
+                </section>
+
+                <section>
+                    <h2>Solution</h2>
+
+                    <div class="fragment" data-fragment-index="0">
+                        <img src="http://www.acceptancetherapy.co.uk/wp-content/uploads/2012/04/Meditation1.jpg">
+                    </div>
+
+                    <div class="fragment" data-fragment-index="0">Be Cognizant of the behavior [3 Amigos]</div>
+                </section>
+                <section>
+                    <section>
+                        <h3>Development based on Behavior</h3>
+
+                        <div>
+                            <img src="http://4.bp.blogspot.com/-8bSAQEG-peA/TtpKnCBHAWI/AAAAAAAAA20/92LlWaQXXpQ/s200/GivenWhenThenSignpost.jpg"
+                                 style="width: 508px; height: 381px; max-height: none; max-width: none;">
+                        </div>
+                    </section>
+
+                    <section>
+                        <h3>How to test in Grails/Groovy/Java?</h3>
+                    </section>
+                </section>
+
+                <section>
+                    <h2>Introducing</h2>
+
+                    <div>
+                        <img src="http://i.qkme.me/3sj1ea.jpg"
+                             style="width: 621.72px; height: 471px; max-height: none; max-width: none;">
+                        <br>
+                    </div>
+                </section>
+                <section>
+                    <h2>Spock Framework</h2>
+
+                    <div>Creator</div>
+
+                    <div><img src="http://a0.twimg.com/profile_images/704688498/pniederw_gmail.com_6473429d.jpg"></div>
+                    <div>Peter Niederwieser</div>
+
+                    <p style="font-size: 18px;">twitter # <a href="https://twitter.com/pniederw">@pniedrw</a></p>
+                </section>
+
+                <section>
+                        <h3>Behavior Based Test Case</h3><br>
+
+                        <div>
+                            <pre style="font-style: normal; font-variant: normal; width: 860.390625px;"><code data-trim contenteditable>
+@TestFor(SampleController)
+@Mock(Sample)
+class SampleControllerTests extends ControllerSpec {
+    void "test controller should return Grails and Ale"() {
+        given: "A sample object with name Sample"
+            new Sample(name: 'Sample')
+
+        when: "Controller show action is called"
+            controller.show()
+
+        then: "The response should be Grails and Ale"
+            controller.response.contentAsString == 'Grails and Ale'
+    }
+}
+                            </code></pre>
+                        </div>
+                        <p style="font-size: 32px; color: #00ff00;">Self documented test matching laid out specification</p>
+                    </section>
+
+                <section>
+                    <h3>Address Pain Points</h3>
+
+                    <div class="absolute-element"
+                         style="position: absolute; width: 412px; height: 276px; z-index: 4; left: 272px; top: 197px;">
+                        <ul>
+                            <li>Adhere to BDD</li>
+                            <li>Easy mocking API</li>
+                            <li>Easy Stubbing API</li>
+                            <li>Fine Grained testing</li>
+                            <li>Above all, its Groovier.</li>
+                        </ul>
+                    </div>
+                </section>
+                <section>
+                    <h3>Types of Testing</h3><br>
+                    <div>
+                        <ol>
+                            <li>Data Driven</li>
+                            <li>Interaction Based</li>
+                        </ol>
+                    </div>
+                </section>
+                <section>
+                    <h2>
+                        <img src="http://www.usmsp.com/wp-content/uploads/2013/02/demo.jpg" style="font-size: 64.566px;">
+                        <br>
+                    </h2>
+                </section>
+                <section>
+                    <h3>Sources</h3>
+
+                    <div style="text-align: left;">
+                        <p style="font-size: 28px; font-family: inherit; font-style: inherit; font-variant: inherit;">@Spock
+                            Framework Docs:&nbsp;</p>
+                    </div>
+
+                    <div style="text-align: left;">
+                        <a href="http://docs.spockframework.org/en/spock-0.7-groovy-2.0/introduction.html"
+                           style="font-size: 28px;">http://docs.spockframework.org/en/spock-0.7-groovy-2.0/introduction.html</a>
+                    </div>
+
+                    <div style="text-align: left;">
+                        <br>
+                        <p style="font-family: inherit; font-style: inherit; font-variant: inherit; font-size: 28px;">@BDD Definition:</p>
+                    </div>
+
+                    <div style="text-align: left;">
+                        <a href="http://dannorth.net/introducing-bdd/"
+                           style="font-size: 28px;">http://dannorth.net/introducing-bdd/</a>
+                    </div>
+
+                    <div style="text-align: left;">
+                        <br>
+                        <p style="font-family: inherit; font-style: inherit; font-variant: inherit; font-size: 28px;">@Google Code:</p>
+                    </div>
+
+                    <div style="text-align: left;">
+                        <a href="https://code.google.com/p/spock/" style="font-size: 28px;">https://code.google.com/p/spock/</a>
+                    </div>
+
+                    <div style="text-align: left;">
+                        <br>
+                        <p style="font-family: inherit; font-style: inherit; font-variant: inherit; font-size: 28px;">@Github</p>
+                    </div>
+
+                    <div style="text-align: left;">
+                        <a href="https://github.com/spockframework/spock"
+                           style="font-size: 28px;">https://github.com/spockframework/spock</a>
+                    </div>
+                </section>
+                <section>
+                    <h2>
+                        <img src="http://www.ssrnow.com/sites/default/files/image/images/faqs.jpg"
+                             style="width: 379.35656836461123px; height: 283px; max-height: none; max-width: none;">
+                        <br>
+                    </h2>
+                </section>
+                <section>
+                    <h3>Thank You</h3>
+                </section>
+            </div>
+        </div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+		<script>
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+					// { src: 'plugin/search/search.js', async: true, condition: function() { return !!document.body.classList; } }
+					// { src: 'plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+		</script>
+	</body>
+</html>
