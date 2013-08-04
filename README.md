@@ -1,7 +1,5 @@
-# Behavior Driven Development
+## Behavior Driven Development
 
-A presentation on Behavior Driven Development and Spock Framework.
+A presentation on Behavior Driven Development and Spock Framework & usage of Spock in Grails
 
-Usage of Spock in Grails
-
-Presentation prepared by [@dhirajmahapatro](https://twitter.com/dhirajmahapatro) using [reveal.js](http://lab.hakim.se/reveal-js/#/)
+[Presentation](http://dmahapatro.github.io/bdd-grails-spock-presentation/#/) prepared by [@dhirajmahapatro](https://twitter.com/dhirajmahapatro) using [reveal.js](http://lab.hakim.se/reveal-js/#/)
